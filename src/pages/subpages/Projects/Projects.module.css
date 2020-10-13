@@ -6,7 +6,7 @@
 .loading {
     display: inline-block;
     border: 10px solid #ccc;
-    border-top: 10px solid purple;
+    border-top: 10px solid #641885;
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -17,7 +17,7 @@
 .heading {
     margin-bottom: 30px;
     font-size: 30px;
-    border-bottom: 2px solid purple;
+    border-bottom: 2px solid #641885;
     padding-bottom: 10px;
 }
 
@@ -27,15 +27,15 @@
 }
 
 .timeline::before {
-    background: purple !important;
+    background: #641885 !important;
 }
 
 .colored {
-    color: purple !important;
+    color: #641885 !important;
 }
 
 .date {
-    color: purple;
+    color: #641885;
     font-weight: bold !important;
 }
 
@@ -54,12 +54,14 @@
 }
 
 .created > span {
-    font-family: Arial, sans-serif;
     margin-left: 5px;
 }
 
 @media screen and (max-width: 1170px) {
     .white {
         color: #fff !important;
+    }
+    .icon {
+        font-size: 30px;
     }
 }

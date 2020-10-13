@@ -32,7 +32,7 @@
     border: none;
     -webkit-border-radius: 0px;
     border-radius: 0px;
-    border-bottom: 2px solid purple;
+    border-bottom: 2px solid #641885;
     box-sizing: border-box;
     width: 100%;
     padding: 15px 15px 10px 15px;
@@ -104,7 +104,7 @@
 .loading {
     display: inline-block;
     border: 10px solid #ccc;
-    border-top: 10px solid purple;
+    border-top: 10px solid #641885;
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -114,4 +114,16 @@
 
 .dn {
     display: none;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    .block {
+        width: 100%;
+        box-sizing: border-box;
+    }
 }

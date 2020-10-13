@@ -4,3 +4,9 @@
     box-sizing: border-box;
     overflow: scroll;
 }
+
+@media screen and (max-width: 500px) {
+    .scene {
+        height: calc(100vh - 140px);
+    }
+}

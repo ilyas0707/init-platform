@@ -30,7 +30,7 @@ export const Dashboard = () => {
             <li key={ i } className={Styles.item}>
                 <NavLink activeClassName={Styles.active} to={`/panel/${ link }`}>
                     <i className={`material-icons ${Styles.icon}`}>{ icon }</i>
-                    { title }
+                    <span className={Styles.text}>{ title }</span>
                 </NavLink>
             </li>
         )

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from "react"
 import Styles from "./Auth.module.css"
-import Container from "./../../App.module.css"
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 import { useHttp } from "./../../hooks/http.hook"
@@ -64,7 +63,7 @@ export const Auth = () => {
     }, [enterHandler])
 
     return(
-        <div className={Container.container}>
+        <div className={Styles.container}>
             <div className={Styles.block}>
                 <h2 className={Styles.heading}>Вход</h2>
                 <form action="#" className={Styles.form}>

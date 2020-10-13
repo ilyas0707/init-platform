@@ -23,8 +23,6 @@ export const Projects = () => {
         } catch (e) {}
     }, [request, API_URL, code])
 
-    console.log(projects);
-
     if (loading) {
         return (
             <>
@@ -50,16 +48,21 @@ export const Projects = () => {
                                 <VerticalTimelineElement
                                     key={i}
                                     className={Styles.element}
-                                    contentStyle={project.isCompleted === 1 ? { background: '#00ff00', color: '#000' } : { background: 'purple', color: '#fff' }}
-                                    contentArrowStyle={project.isCompleted === 1 ? { borderRight: '7px solid #00ff00' } : { borderRight: '7px solid purple' }}
-                                    iconStyle={project.isCompleted === 1 ? { background: '#00ff00', color: '#000' } : { background: 'purple', color: '#fff' }}
+                                    contentStyle={project.isCompleted === 1 ? { background: '#00ff00', color: '#000' } : { background: '#641885', color: '#fff' }}
+                                    contentArrowStyle={project.isCompleted === 1 ? { borderRight: '7px solid #00ff00' } : { borderRight: '7px solid #641885' }}
+                                    iconStyle={project.isCompleted === 1 ? { background: '#00ff00', color: '#000' } : { background: '#641885', color: '#fff' }}
                                     dateClassName={`${Styles.date} ${Styles.white}`}
                                     date={project.description}
                                     icon={project.isCompleted === 1 ? <i className={`material-icons ${Styles.icon}`}>done</i> : <i className={`material-icons ${Styles.icon}`}>autorenew</i>}
                                     iconClassName={Styles.circle}
                                 >
                                     <h3>{project.title}</h3>
-                                    <p>{users.map(({fullname}) => {names.push(fullname)})} {names.join(', ') || 'Нет коллабораторов'}</p>
+                                    <p>
+                                        {
+                                            // eslint-disable-next-line
+                                            users.map(({fullname}) => {names.push(fullname)})} {names.join(', ') || 'Нет коллабораторов'
+                                        }
+                                    </p>
                                     <p className={Styles.created}>Дата создания: 
                                         <span>{date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()}</span>
                                     </p>

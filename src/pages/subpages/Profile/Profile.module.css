@@ -1,6 +1,7 @@
 .card {
     display: inline-block;
     padding: 40px;
+    box-sizing: border-box;
     box-shadow: 0px 0px 10px 0px #ccc;
     border-radius: 10px;
 }
@@ -27,14 +28,19 @@
     font-size: 20px;
 }
 
-.item:nth-child(3) {
-    font-family: Arial, sans-serif;
-}
-
 .item:last-child {
     margin-bottom: 0;
 }
 
 .icon {
     margin-right: 10px;
+}
+
+@media screen and (max-width: 360px) {
+    .card {
+        width: 100%;
+    }
+    .avatar > img {
+        width: 100%;
+    }
 }

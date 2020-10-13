@@ -9,7 +9,7 @@ import Woman from './../../../assets/images/woman.png'
 export const Employees = () => {
     const { code } = useAuth()
     const { loading, request, API_URL } = useHttp()
-    const [employees, setEmployees] = useState()
+    const [employees, setEmployees] = useState([])
 
     useEffect(() => {
         try {
@@ -39,50 +39,59 @@ export const Employees = () => {
                 <div className={Styles.block}>
                     <h3 className={Styles.title}>Администрация</h3>
                     <div className={Styles.item}>
-                        {employees.map(({id, fullname, level, gender}, i) => {
-                            if (level === 4) {
-                                return (
-                                    <div className={Styles.card} key={ i }>
-                                        {gender === 'male' ? 
-                                        <img src={Man} alt="man" /> :
-                                        <img src={Woman} alt="woman" />}
-                                        <p className={Styles.name}>{ fullname }</p>
-                                    </div>
-                                )
-                            }
-                        })}
+                        {
+                            // eslint-disable-next-line
+                            employees.map(({id, fullname, level, gender}, i) => {
+                                if (level === 4) {
+                                    return (
+                                        <div className={Styles.card} key={ i }>
+                                            {gender === 'male' ? 
+                                            <img src={Man} alt="man" /> :
+                                            <img src={Woman} alt="woman" />}
+                                            <p className={Styles.name}>{ fullname }</p>
+                                        </div>
+                                    )
+                                }
+                            })
+                        }
                     </div>
                     <h3 className={Styles.title}>Старшие менторы</h3>
                     <div className={Styles.item}>
-                        {employees.map(({id, fullname, level, gender, course}, i) => {
-                            if (level === 3) {
-                                return (
-                                    <div className={Styles.card} key={ i }>
-                                        {gender === 'male' ? 
-                                        <img src={Man} alt="man" /> :
-                                        <img src={Woman} alt="woman" />}
-                                        <p className={Styles.name}>{ fullname }</p>
-                                        <p className={Styles.course}>{ course.title }</p>
-                                    </div>
-                                )
-                            }
-                        })}
+                        {
+                            // eslint-disable-next-line
+                            employees.map(({id, fullname, level, gender, course}, i) => {
+                                if (level === 3) {
+                                    return (
+                                        <div className={Styles.card} key={ i }>
+                                            {gender === 'male' ? 
+                                            <img src={Man} alt="man" /> :
+                                            <img src={Woman} alt="woman" />}
+                                            <p className={Styles.name}>{ fullname }</p>
+                                            <p className={Styles.course}>{ course.title }</p>
+                                        </div>
+                                    )
+                                }
+                            })
+                        }
                     </div>
                     <h3 className={Styles.title}>Младшие менторы</h3>
                     <div className={Styles.item}>
-                        {employees.map(({id, fullname, level, gender, course}, i) => {
-                            if (level === 2) {
-                                return (
-                                    <div className={Styles.card} key={ i }>
-                                        {gender === 'male' ? 
-                                        <img src={Man} alt="man" /> :
-                                        <img src={Woman} alt="woman" />}
-                                        <p className={Styles.name}>{ fullname }</p>
-                                        <p className={Styles.course}>{ course.title }</p>
-                                    </div>
-                                )
-                            }
-                        })}
+                        {
+                            // eslint-disable-next-line
+                            employees.map(({id, fullname, level, gender, course}, i) => {
+                                if (level === 2) {
+                                    return (
+                                        <div className={Styles.card} key={ i }>
+                                            {gender === 'male' ? 
+                                            <img src={Man} alt="man" /> :
+                                            <img src={Woman} alt="woman" />}
+                                            <p className={Styles.name}>{ fullname }</p>
+                                            <p className={Styles.course}>{ course.title }</p>
+                                        </div>
+                                    )
+                                }
+                            })
+                        }
                     </div>
                 </div> : ''
             }
