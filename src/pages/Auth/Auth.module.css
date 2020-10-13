@@ -18,16 +18,16 @@
     align-items: center;
 }
 
-.inputBlock {
+/* .inputBlock {
     position: relative;
     width: 100%;
     margin-bottom: 30px;
-}
+} */
 
-.input {
+/* .input {
     font-size: 16px;
     outline: none;
-    /* -webkit-appearance: none; */
+    -webkit-appearance: none;
     -webkit-border: none;
     border: none;
     -webkit-border-radius: 0px;
@@ -46,7 +46,7 @@
 
 .input:focus::placeholder {
     color: #fff;
-}
+} */
 
 /* .label {
     z-index: -1;
