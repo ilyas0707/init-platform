@@ -32,7 +32,7 @@ export const useHttp = () => {
 
     const clearError = useCallback(() => setError(null), [])
 
-    const API_URL = `http://initlearning.herokuapp.com`
+    const API_URL = `https://initlearning.herokuapp.com`
 
     return { loading, request, error, clearError, API_URL }
 }
