@@ -75,7 +75,7 @@ export const Auth = () => {
                             placeholder="Логин"
                             autoComplete="off"
                             onChange={changeHandler} />
-                        {/* <label htmlFor="username" className={Styles.label}>Логин</label> */}
+                        <label htmlFor="username" className={Styles.label}>Логин</label>
                     </div>
                     <div className={Styles.inputBlock}>
                         <input 
@@ -85,7 +85,7 @@ export const Auth = () => {
                             placeholder="Пароль"
                             autoComplete="off"
                             onChange={changeHandler} />
-                        {/* <label htmlFor="password" className={Styles.label}>Пароль</label> */}
+                        <label htmlFor="password" className={Styles.label}>Пароль</label>
                     </div>
                     <div className={loading ? Styles.loading : Styles.buttons}>
                         <a 
