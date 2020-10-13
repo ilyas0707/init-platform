@@ -36,6 +36,13 @@
     margin-right: 10px;
 }
 
+@media screen and (max-width: 500px) {
+    .profile {
+        display: flex;
+        justify-content: center;
+    }
+}
+
 @media screen and (max-width: 360px) {
     .card {
         width: 100%;

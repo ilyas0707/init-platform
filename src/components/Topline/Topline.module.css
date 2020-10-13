@@ -77,3 +77,9 @@
 .submit:hover {
     background: yellow;
 }
+
+@media screen and (max-width: 500px) {
+    .message {
+        width: 65%;
+    }
+}
