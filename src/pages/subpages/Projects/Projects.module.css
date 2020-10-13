@@ -1,0 +1,65 @@
+@keyframes loading {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    display: inline-block;
+    border: 10px solid #ccc;
+    border-top: 10px solid purple;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: loading .5s linear infinite;
+    cursor: default;
+}
+
+.heading {
+    margin-bottom: 30px;
+    font-size: 30px;
+    border-bottom: 2px solid purple;
+    padding-bottom: 10px;
+}
+
+.timeline {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+.timeline::before {
+    background: purple !important;
+}
+
+.colored {
+    color: purple !important;
+}
+
+.date {
+    color: purple;
+    font-weight: bold !important;
+}
+
+.circle {
+    display: grid;
+    place-items: center;
+}
+
+.icon {
+    color: #fff;
+    font-size: 40px;
+}
+
+.created {
+    font-weight: bold !important;
+}
+
+.created > span {
+    font-family: Arial, sans-serif;
+    margin-left: 5px;
+}
+
+@media screen and (max-width: 1170px) {
+    .white {
+        color: #fff !important;
+    }
+}

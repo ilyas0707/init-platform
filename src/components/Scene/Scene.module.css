@@ -1,0 +1,6 @@
+.scene {
+    height: calc(100vh - 70px);
+    padding: 40px 40px;
+    box-sizing: border-box;
+    overflow: scroll;
+}

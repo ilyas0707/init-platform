@@ -1,0 +1,79 @@
+.topline {
+    height: 70px;
+    box-shadow: 5px 0px 10px 0px rgba(50, 50, 50, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.item {
+    display: flex;
+    list-style: none;
+}
+
+.link {
+    padding: 15px 30px;
+    background: red;
+    color: #000;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-grid;
+    place-items: center;
+}
+
+.profile {
+    color: #000;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    font-size: 40px;
+    margin-right: 5px;
+}
+
+.message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: purple;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    width: 400px;
+    z-index: 11;
+}
+
+.active {
+    display: block;
+}
+
+.text {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.submit {
+    font-weight: bold;
+    display: inline-block;
+    background: yellow;
+    border-radius: 5px;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: #000;
+    transition: .3s;
+    margin-right: 10px;
+}
+
+.submit:nth-child(3) {
+    margin-right: 0;
+}
+
+.submit:hover {
+    background: yellow;
+}
