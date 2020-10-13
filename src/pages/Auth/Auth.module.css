@@ -27,7 +27,7 @@
 .input {
     font-size: 16px;
     outline: none;
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
     -webkit-border: none;
     border: none;
     -webkit-border-radius: 0px;
