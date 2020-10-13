@@ -43,7 +43,6 @@
 
 .input::placeholder {
     color: #000;
-    transition: all .5s;
 }
 
 .input:focus::placeholder {
@@ -57,9 +56,8 @@
     left: 5px;
     transform: translateY(-50%);
     cursor: text;
-    transition: all .5s;
+    transition: all .2s;
     color: #000;
-    opacity: 0;
 }
 
 .input:focus + .label {
@@ -68,7 +66,6 @@
     left: 0;
     transform: translateY(-85%);
     font-weight: bold;
-    opacity: 1;
 }
 
 .buttons {
