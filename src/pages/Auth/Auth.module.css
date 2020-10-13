@@ -18,13 +18,15 @@
     align-items: center;
 }
 
-/* .inputBlock {
+.inputBlock {
     position: relative;
     width: 100%;
     margin-bottom: 30px;
-} */
+}
 
-/* .input {
+.input {
+    -webkit-user-select: text;
+    user-select: text;
     font-size: 16px;
     outline: none;
     -webkit-appearance: none;
@@ -38,25 +40,28 @@
     padding: 15px 15px 10px 15px;
     color: #000;
     font-size: 20px;
+    z-index: 1;
 }
 
 .input::placeholder {
     color: #000;
+    transition: all .5s;
 }
 
 .input:focus::placeholder {
     color: #fff;
-} */
+}
 
-/* .label {
+.label {
     z-index: -1;
     position: absolute;
     top: 50%;
     left: 5px;
     transform: translateY(-50%);
     cursor: text;
-    transition: all .2s;
+    transition: all .5s;
     color: #000;
+    opacity: 0;
 }
 
 .input:focus + .label {
@@ -65,7 +70,8 @@
     left: 0;
     transform: translateY(-85%);
     font-weight: bold;
-} */
+    opacity: 1;
+}
 
 .buttons {
     display: flex;
