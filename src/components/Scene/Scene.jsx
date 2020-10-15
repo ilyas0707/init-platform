@@ -6,6 +6,7 @@ import { Projects } from '../../pages/subpages/Projects/Projects'
 import { Attendance } from '../../pages/subpages/Attendance/Attendance'
 import { Events } from '../../pages/subpages/Events/Events'
 import { Employees } from '../../pages/subpages/Employees/Employees'
+import { Create } from '../../pages/subpages/Create/Create'
 
 import Styles from './Scene.module.css'
 export const Scene = () => {
@@ -29,6 +30,9 @@ export const Scene = () => {
                 </Route>
                 <Route path="/panel/employees" exact>
                     <Employees />
+                </Route>
+                <Route path="/panel/create" exact>
+                    <Create />
                 </Route>
             </Switch>
         </div>
