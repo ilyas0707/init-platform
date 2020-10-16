@@ -6,13 +6,11 @@ export const Create = () => {
     const [opened, setOpened] = useState(0)
 
     const User = [
+        { type: "text", name: "username", label: "Логин"},
+        { type: "text", name: "password", label: "Пароль"},
         { type: "text", name: "fullname", label: "Имя"},
-        { type: "text", name: "gender", label: "Пол"},
         { type: "email", name: "email", label: "Email"},
         { type: "number", name: "phoneNumber", label: "Номер телефона"},
-        { type: "text", name: "role", label: "Роль"},
-        { type: "text", name: "login", label: "Логин"},
-        { type: "text", name: "password", label: "Пароль"},
     ]
     const Project = [
         { type: "text", name: "title", label: "Название"},
@@ -24,6 +22,27 @@ export const Create = () => {
         { type: "text", name: "description", label: "Описание"}
     ]
 
+    const select = [
+        { name: "gender", options: [
+            { label: 'Пол', id: 'undefined' }, 
+            { label: 'Мужской', id: 'male' }, 
+            { label: 'Женский', id: 'female' } 
+        ] },
+        { name: "level", options: [
+            { label: 'Статус', id: 0 }, 
+            { label: 'Ученик', id: 1 }, 
+            { label: 'Младший ментор', id: 2 }, 
+            { label: 'Старший ментор', id: 3 }, 
+            { label: 'Администратор', id: 4 }
+        ] },
+        { name: "courseId", options: [
+            { label: 'Курс', id: 0 }, 
+            { label: 'JavaScript', id: 'JavaScript' }, 
+            { label: 'Java', id: 'Java' }, 
+            { label: 'Python', id: 'Python' }
+        ] },
+    ]
+
     const openTab = (id) => {
         setOpened(id)
     }
@@ -33,7 +52,7 @@ export const Create = () => {
     ]
 
     const tabs = [
-        { data: User, heading: 'Создать пользователя' },
+        { data: User, heading: 'Создать пользователя', select: select },
         { data: Project, heading: 'Создать проект' },
         { data: Event, heading: 'Создать событие' }
     ]
@@ -57,10 +76,10 @@ export const Create = () => {
                 }
             </div>
             {
-                tabs.map(({data, heading}, i) => {
+                tabs.map(({data, heading, select}, i) => {
                     return (
                         <div key={ i } className={`${Styles.form} ${opened === i ? Styles.active : ''}`}>
-                            <Form data={ data } heading={ heading } />
+                            <Form data={ data } heading={ heading } select={select} />
                         </div>
                     )
                 })

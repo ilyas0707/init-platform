@@ -42,6 +42,31 @@
     color: #fff;
 }
 
+.relative {
+    position: relative;
+}
+
+.select {
+    outline: none;
+    -webkit-appearance: none;
+    -webkit-border: 3px solid #641885;
+    border: 3px solid #ccc;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px;
+    color: #000;
+    font-size: 16px;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: rotate(90deg) translateX(-50%);
+}
+
 .submit {
     margin-top: 20px;
     border: none;

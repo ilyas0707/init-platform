@@ -28,6 +28,8 @@ export const Employees = () => {
         setOpened(id)
     }
 
+    console.log(employees);
+
     const links = [
         { name: 'Все' }, { name: 'Администрация' }, { name: 'Старшие менторы' }, { name: 'Младшие менторы' }
     ]
@@ -91,7 +93,7 @@ export const Employees = () => {
                                             <img src={Man} alt="man" /> :
                                             <img src={Woman} alt="woman" />}
                                             <p className={Styles.name}>{ fullname }</p>
-                                            <p className={Styles.course}>{ course.title }</p>
+                                            <p className={Styles.course}>{ course ? course.title : '' }</p>
                                         </div>
                                     )
                                 }
@@ -110,7 +112,7 @@ export const Employees = () => {
                                             <img src={Man} alt="man" /> :
                                             <img src={Woman} alt="woman" />}
                                             <p className={Styles.name}>{ fullname }</p>
-                                            <p className={Styles.course}>{ course.title }</p>
+                                            <p className={Styles.course}>{ course ? course.title : '' }</p>
                                         </div>
                                     )
                                 }
