@@ -10,6 +10,7 @@ export const Employees = () => {
     const { code } = useAuth()
     const { loading, request, API_URL } = useHttp()
     const [employees, setEmployees] = useState([])
+    const [opened, setOpened] = useState(0)
 
     useEffect(() => {
         try {
@@ -23,6 +24,14 @@ export const Employees = () => {
         } catch (e) {}
     }, [request, API_URL, code])
 
+    const openTab = (id) => {
+        setOpened(id)
+    }
+
+    const links = [
+        { name: 'Все' }, { name: 'Администрация' }, { name: 'Старшие менторы' }, { name: 'Младшие менторы' }
+    ]
+
     if (loading) {
         return (
             <>
@@ -34,11 +43,26 @@ export const Employees = () => {
     return (
         <div className={Styles.employees}>
             <h2 className={Styles.heading}>Сотрудники</h2>
+            <div className={Styles.tabs}>
+                {
+                    links.map(({name}, i) => {
+                        return (
+                            <a
+                                key={ i }
+                                href="/"
+                                className={`${Styles.tab} ${opened === i ? Styles.active : ''}`}
+                                onClick={e => {e.preventDefault(); openTab(i)}}>
+                                { name }
+                            </a>
+                        )
+                    })
+                }
+            </div>
             {
                 employees ?
                 <div className={Styles.block}>
-                    <h3 className={Styles.title}>Администрация</h3>
-                    <div className={Styles.item}>
+                    <div className={`${Styles.item} ${opened === 1 ? Styles.active : ''} ${opened === 0 ? Styles.active : ''}`}>
+                        <h3 className={Styles.title}>Администрация</h3>
                         {
                             // eslint-disable-next-line
                             employees.map(({id, fullname, level, gender}, i) => {
@@ -55,8 +79,8 @@ export const Employees = () => {
                             })
                         }
                     </div>
-                    <h3 className={Styles.title}>Старшие менторы</h3>
-                    <div className={Styles.item}>
+                    <div className={`${Styles.item} ${opened === 2 ? Styles.active : ''} ${opened === 0 ? Styles.active : ''}`}>
+                        <h3 className={Styles.title}>Старшие менторы</h3>
                         {
                             // eslint-disable-next-line
                             employees.map(({id, fullname, level, gender, course}, i) => {
@@ -74,8 +98,8 @@ export const Employees = () => {
                             })
                         }
                     </div>
-                    <h3 className={Styles.title}>Младшие менторы</h3>
-                    <div className={Styles.item}>
+                    <div className={`${Styles.item} ${opened === 3 ? Styles.active : ''} ${opened === 0 ? Styles.active : ''}`}>
+                        <h3 className={Styles.title}>Младшие менторы</h3>
                         {
                             // eslint-disable-next-line
                             employees.map(({id, fullname, level, gender, course}, i) => {

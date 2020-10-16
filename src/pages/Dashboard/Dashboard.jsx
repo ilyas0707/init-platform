@@ -3,12 +3,9 @@ import { NavLink } from 'react-router-dom'
 import { Topline } from '../../components/Topline/Topline'
 import { Scene } from '../../components/Scene/Scene'
 import Styles from './Dashboard.module.css'
-import { useAuth } from '../../hooks/auth.hook'
 
 export const Dashboard = () => {
     const [open, setOpen] = useState(false)
-    const { profile } = useAuth()
-    console.log(profile);
     
     const openMenu = event => {
         event.preventDefault()
@@ -20,25 +17,12 @@ export const Dashboard = () => {
         }
     }
 
-    const adminHandler = () => {
-        if (profile.userRole[1]) {
-            return true
-        }
-    }
-
-    if (profile.userRole) {
-        adminHandler()
-    }
-
     const links = [
         { title: 'Курсы', link: 'courses', icon: 'library_books' },
         { title: 'Проекты', link: 'projects', icon: 'dashboard' },
         { title: 'Посещаемость', link: 'attendance', icon: 'fact_check' },
         { title: 'События', link: 'events', icon: 'event' },
-        { title: 'Сотрудники', link: 'employees', icon: 'supervised_user_circle' },
-        profile.userRole ?
-            profile.userRole[1] ? { title: 'Создать', link: 'create', icon: 'create' } : ''
-        : {}
+        { title: 'Сотрудники', link: 'employees', icon: 'supervised_user_circle' }
     ]
 
     const items = links.map(({title, link, icon}, i) => {

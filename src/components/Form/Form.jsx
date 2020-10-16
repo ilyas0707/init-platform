@@ -1,61 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Styles from './Form.module.css'
 
-export const Form = (props) => {
+export const Form = ({data, heading}) => {
+    const [form, setForm] = useState({})
+
+    const changeHandler = e => {
+        setForm({ ...form, [e.target.name]: e.target.value })
+    }
+
     return (
         <div className={Styles.form}>
             <div className={Styles.block}>
+                <h3 className={Styles.heading}>{ heading }</h3>
                 {
-                    props.user ?
-                    <div className={Styles.item}>
-                        <h3>Создание пользователя</h3>
-                        <form action="#" className={Styles.input}>
-                            {
-                                props.user.User.map(({row}, i) => {
-                                    let placeholder = JSON.stringify(row)[1].toUpperCase()
-                                    return (
-                                        <input key={ i } type="text" name={row} placeholder={placeholder + row.substring(1)} />
-                                    )
-                                })
-                            }
-                            <button>Submit</button>
-                        </form>
-                    </div> : ''
+                    data ?
+                    data.map(({type, name, label}, i) => {
+                        return (
+                            <div key={ i } className={Styles.item}>
+                                <input 
+                                    type={ type }
+                                    className={Styles.input}
+                                    name={ name }
+                                    placeholder={ label }
+                                    autoComplete="off"
+                                    onChange={changeHandler} />
+                            </div>
+                        )
+                    }) : ''
                 }
-                {
-                    props.project ?
-                    <div className={Styles.item}>
-                        <h3>Создание проекта</h3>
-                        <form action="#" className={Styles.input}>
-                            {
-                                props.project.Project.map(({row}, i) => {
-                                    let placeholder = JSON.stringify(row)[1].toUpperCase()
-                                    return (
-                                        <input key={ i } type="text" name={row} placeholder={placeholder + row.substring(1)} />
-                                    )
-                                })
-                            }
-                            <button>Submit</button>
-                        </form>
-                    </div> : ''
-                }
-                {
-                    props.event ?
-                    <div className={Styles.item}>
-                        <h3>Создание события</h3>
-                        <form action="#" className={Styles.input}>
-                            {
-                                props.event.Event.map(({row}, i) => {
-                                    let placeholder = JSON.stringify(row)[1].toUpperCase()
-                                    return (
-                                        <input key={ i } type="text" name={row} placeholder={placeholder + row.substring(1)} />
-                                    )
-                                })
-                            }
-                            <button>Submit</button>
-                        </form>
-                    </div> : ''
-                }
+                <button type="submit" className={Styles.submit}>Создать</button>
             </div>
         </div>
     )

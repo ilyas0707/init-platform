@@ -11,6 +11,7 @@ export const Courses = () => {
     const { code } = useAuth()
     const { loading, request, API_URL } = useHttp()
     const [courses, setCourses] = useState()
+    const [opened, setOpened] = useState(false)
 
     useEffect(() => {
         try {
@@ -34,6 +35,14 @@ export const Courses = () => {
         }
     }
 
+    const openCourse = (id) => {
+        if (opened === id) {
+            setOpened(false)
+        } else {
+            setOpened(id)
+        }
+    }
+
     if (loading) {
         return (
             <>
@@ -42,15 +51,19 @@ export const Courses = () => {
             </>
         )
     }
+
     return (
         <div className={Styles.courses}>
             <h2 className={Styles.heading}>Курсы</h2>
             {
                 courses ?
                 <div className={Styles.block}>
-                    {courses.map(({id, title, duration}, i) => {
+                    {courses.map(({id, title, duration, status}, i) => {
                         return (
-                            <div className={Styles.course} key={ i }>
+                            <div 
+                                key={ i } 
+                                className={`${Styles.course} ${status === 0 ? Styles.disabled : ''}`}
+                                onClick={() => openCourse(i)}>
                                 <div className={Styles.info}>
                                     <h3 className={Styles.title}>{ title }</h3>
                                     <p className={Styles.duration}>
@@ -60,6 +73,11 @@ export const Courses = () => {
                                 </div>
                                 <div className={Styles.logo}>
                                     {iconHandler(title)}
+                                </div>
+                                <div
+                                    className={`${Styles.description} ${opened === i ? Styles.active : ''}`}>
+                                    <p>Менторы:</p>
+                                    <p>Ученики:</p>
                                 </div>
                             </div>
                         )

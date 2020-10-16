@@ -1,9 +1,25 @@
+.profile {
+    display: flex;
+}
+
+@keyframes appear {
+    0% {
+        opacity: .4;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .card {
     display: inline-block;
     padding: 40px;
     box-sizing: border-box;
     box-shadow: 0px 0px 10px 0px #ccc;
     border-radius: 10px;
+    animation: appear .3s linear;
 }
 
 .avatar {
@@ -24,6 +40,7 @@
 }
 
 .item:first-child {
+    text-align: center;
     text-transform: uppercase;
     font-size: 20px;
 }
@@ -34,6 +51,15 @@
 
 .icon {
     margin-right: 10px;
+}
+
+@media screen and (max-width: 580px) {
+    .profile {
+        flex-direction: column;
+    }
+    .create {
+        margin-top: 30px;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -50,4 +76,18 @@
     .avatar > img {
         width: 100%;
     }
+}
+
+.create {
+    width: 100%;
+    text-align: right;
+}
+
+.create > a {
+    color: #000;
+    display: inline-flex;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px #ccc;
+    border-radius: 10px;
 }

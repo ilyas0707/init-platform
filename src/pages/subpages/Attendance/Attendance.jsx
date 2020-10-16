@@ -11,7 +11,8 @@ export const Attendance = () => {
     const { code } = useAuth()
     const { loading, request, API_URL } = useHttp()
     const [employees, setEmployees] = useState([])
-    const [form, setForm] = useState("")
+    const [search, setSearch] = useState("")
+    const [form, setForm] = useState({})
 
     useEffect(() => {
         try {
@@ -25,19 +26,29 @@ export const Attendance = () => {
         } catch (e) {}
     }, [request, API_URL, code])
 
+    const changeHandler = ({ currentTarget = {} }) => {
+        const { value } = currentTarget
+        setSearch(value)
+    }
+
     const fuse = new Fuse(employees, {
         keys: [
             "fullname"
         ]
     })
 
-    const results = fuse.search(form)
-    const employeesFiltered = form ? results.map(result => result.item) : employees
+    const results = fuse.search(search)
+    const employeesFiltered = search ? results.map(result => result.item) : employees
 
-    const changeHandler = ({ currentTarget = {} }) => {
-        const { value } = currentTarget
-        setForm(value)
+    const takeAttendace = (name, value) => {
+        setForm({ ...form, [name]: value })
     }
+
+    const buttons = [
+        { style: Styles.absent, icon: 'clear', status: 'absent' },
+        { style: Styles.late, icon: 'timer', status: 'late' },
+        { style: Styles.present, icon: 'done', status: 'present' }
+    ]
 
     if (loading) {
         return (
@@ -49,6 +60,9 @@ export const Attendance = () => {
     }
     return (
         <div className={Styles.employees}>
+            <style>
+            
+            </style>
             <h2 className={Styles.heading}>Посещаемость</h2>
             <div className={Styles.search}>
                 <input type="text" className={Styles.input} name="name" onChange={changeHandler} placeholder="Поиск..." autoComplete="off" />
@@ -68,16 +82,40 @@ export const Attendance = () => {
                                                 <img src={Man} alt="man" /> :
                                                 <img src={Woman} alt="woman" />}
                                                 <p className={Styles.name}>{ fullname }</p>
+                                                {
+                                                    Object.keys(form).map((element, i) => (
+                                                        element === fullname ? 
+                                                        <p key={ i } className={`${Styles.status} ${
+                                                            form[element] === 'absent' ? Styles.absentActive :
+                                                            form[element] === 'late' ? Styles.lateActive :
+                                                            form[element] === 'present' ? Styles.presentActive : ''
+                                                        }`}></p> : undefined
+                                                    ))
+                                                }
                                             </div>
                                             <div className={Styles.buttons}>
-                                                <button className={Styles.absent}><i className={`material-icons ${Styles.icon}`}>clear</i></button>
-                                                <button className={Styles.present}><i className={`material-icons ${Styles.icon}`}>done</i></button>
+                                                {
+                                                    buttons.map(({style, icon, status}, i) => {
+                                                        return (
+                                                            <button 
+                                                                key={ i }
+                                                                className={style}
+                                                                onClick={() => takeAttendace(fullname, status)}>
+                                                                <i className={`material-icons ${Styles.icon}`}>{ icon }</i>
+                                                            </button>
+                                                        )
+                                                    })
+                                                }
                                             </div>
                                         </div>
                                     )
                                 }
                             })
                         }
+                    </div>
+                    <div className={Styles.submit}>
+                        <button type="submit" onClick={() => {setForm({})}}>Очистить</button>
+                        <button type="submit">Отправить</button>
                     </div>
                 </div> : ''
             }

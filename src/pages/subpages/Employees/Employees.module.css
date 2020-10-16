@@ -32,12 +32,21 @@
     }
 }
 
-.item {
-    display: flex;
+.block {
     animation: appear .25s linear;
 }
 
+.item {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.item.active {
+    display: flex;
+}
+
 .title {
+    width: 100%;
     font-size: 26px;
     margin-bottom: 30px;
 }
@@ -53,7 +62,7 @@
     text-align: center;
 }
 
-.card:nth-child(4n) {
+.card:nth-child(5n) {
     margin-right: 0;
 }
 
@@ -72,6 +81,30 @@
     font-size: 20px;
 }
 
+.tabs {
+    margin-bottom: 30px;
+    display: flex;
+    background: #641885;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.tab {
+    width: 33%;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    padding: 15px 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.tab.active {
+    color: #fff;
+    border-bottom: 5px solid yellow;
+}
+
 @media screen and (max-width: 1100px) {
     .item {
         flex-wrap: wrap;
@@ -81,13 +114,22 @@
         margin-right: 10%;
         margin-left: 5%;
     }
-    .card:nth-child(4n) {
-        margin-right: 10%;
-        margin-left: 10%;
-    }
-    .card:nth-child(2n) {
+    .card:nth-child(5n) {
         margin-right: 5%;
         margin-left: 0;
+    }
+    .card:nth-child(3n) {
+        margin-right: 5%;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .tabs {
+        flex-wrap: wrap;
+    }
+    .tab {
+        width: 50%;
     }
 }
 
@@ -106,6 +148,12 @@
     }
     .card:nth-child(2n) {
         margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .tab {
+        width: 100%;
     }
 }
 
