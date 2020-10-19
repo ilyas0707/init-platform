@@ -11,8 +11,8 @@ export const useRoutes = (isAuthentificated) => {
                 <div className={Styles.dashboard}>
                     <Dashboard />
                 </div>
-                <Redirect to="/panel/profile" />
-            </Fragment> 
+                <Redirect to="/panel/employees" />
+            </Fragment>
         )
     }
 

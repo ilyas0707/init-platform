@@ -71,6 +71,16 @@
     margin-bottom: 30px;
 }
 
+.card > button {
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    padding: 0;
+    outline: none;
+    float: right;
+    transform: translateX(10px);
+}
+
 .name {
     font-size: 22px;
     font-weight: bold;

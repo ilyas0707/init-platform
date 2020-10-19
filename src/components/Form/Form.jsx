@@ -7,7 +7,7 @@ import { useSuccess } from '../../hooks/success.hook'
 import { useError } from '../../hooks/error.hook'
 import Styles from './Form.module.css'
 
-export const Form = ({data, heading, select}) => {
+export const Form = ({id, data, heading, select, users, url}) => {
     toast.configure({
         autoClose: 3000,
         draggable: true
@@ -18,10 +18,11 @@ export const Form = ({data, heading, select}) => {
     const successMessage = useSuccess()
     const errorMessage = useError()
     const [form, setForm] = useState({})
+    // const [collaborators, setCollaborators] = useState([])
 
     const createUser = async () => {
         try {
-            const data = await request(`${API_URL}/user/create`, "POST", {...form}, {
+            const data = await request(`${API_URL}/${url}/create`, "POST", {...form}, {
                 Authorization: `Basic ${code.hashed}`
             })
             successMessage(data.message)
@@ -30,14 +31,31 @@ export const Form = ({data, heading, select}) => {
         }
     }
 
-    const changeHandler = e => {
-        setForm({ 
-            ...form, [e.target.name]: e.target.name === 'level' ? +e.target.value :
-            e.target.name === 'courseId' && e.target.value === 'Java' ? 1 : 
-            e.target.name === 'courseId' && e.target.value === 'JavaScript' ? 2 : 
-            e.target.name === 'courseId' && e.target.value === 'Python' ? 3 :
-            e.target.value, 'isActive': 1
-        })
+    const changeHandler = e => {     
+        if (id === 'user') {
+            setForm({ 
+                ...form, [e.target.name]: e.target.name === 'level' ? +e.target.value :
+                e.target.name === 'courseId' && e.target.value === 'Java' ? 1 : 
+                e.target.name === 'courseId' && e.target.value === 'JavaScript' ? 2 : 
+                e.target.name === 'courseId' && e.target.value === 'Python' ? 3 :
+                e.target.value, 'isActive': 1
+            })
+        } else if (id === 'project') {
+            // users.map(({fullname}, i) => {
+            //     setForm({
+            //         ...form, [e.target.name]: e.target.name === 'users' ? collaborators :
+            //         e.target.value
+            //     })
+            //     return fullname === e.target.value ? setCollaborators([...collaborators, users[i]]) : ''
+            // })
+            setForm({ 
+                ...form, [e.target.name]: e.target.value
+            })
+        } else if (id === 'event') {
+            setForm({ 
+                ...form, [e.target.name]: e.target.value
+            })
+        }
     }
 
     console.log(form);
@@ -49,6 +67,19 @@ export const Form = ({data, heading, select}) => {
                 {
                     data ?
                     data.map(({type, name, label}, i) => {
+                        if (type === 'textarea') {
+                            return (
+                                <div key={ i } className={Styles.item}>
+                                <textarea 
+                                    className={Styles.input} 
+                                    name={ name } 
+                                    placeholder={ label } 
+                                    onChange={changeHandler} 
+                                    autoComplete="off">
+                                </textarea>
+                            </div>
+                            )
+                        }
                         return (
                             <div key={ i } className={Styles.item}>
                                 <input 
@@ -81,6 +112,39 @@ export const Form = ({data, heading, select}) => {
                         )
                     }) : ''
                 }
+                {/* {
+                    users ?
+                    <div className={`${Styles.item} ${Styles.relative}`}>
+                        <select className={Styles.select} name="users" onChange={changeHandler}>
+                            <option>Коллабораторы</option>
+                            {
+                                users.map(({fullname}, i) => {
+                                    return (
+                                        <option key={ i }>{ fullname }</option>
+                                    )
+                                })
+                            }
+                        </select>
+                        <i className={`material-icons ${Styles.icon}`}>play_arrow</i>
+                    </div> : ''
+                } */}
+                {/* {
+                    collaborators ?
+                    <div className={Styles.collaborators}>
+                        {
+                            collaborators.map(({fullname}, i) => {
+                                return (
+                                    <div key={ i } className={Styles.card}>
+                                        <p>
+                                            { fullname }
+                                            <button><i className={`material-icons ${Styles.cancel}`}>clear</i></button>
+                                        </p>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div> : ''
+                } */}
                 <button type="submit" onClick={() => {createUser()}} className={Styles.submit}>Создать</button>
             </div>
         </div>
