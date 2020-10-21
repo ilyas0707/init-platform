@@ -96,18 +96,6 @@
     width: 104px;
 }
 
-.description {
-    display: none;
-    width: 100%;
-    transition: all .2s linear;
-}
-
-.description.active {
-    display: block;
-    margin-top: 20px;
-    transition: all .2s linear;
-}
-
 .disabled {
     filter: grayscale(1);
 }

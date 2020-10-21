@@ -5,7 +5,7 @@ import { useHttp } from '../../../hooks/http.hook'
 import Styles from './Events.module.css'
 
 export const Events = () => {
-    const { code } = useAuth()
+    const { profile, code } = useAuth()
     const { loading, request, API_URL } = useHttp()
     const history = useHistory()
     const [events, setEvents] = useState()
@@ -21,8 +21,6 @@ export const Events = () => {
             }
         } catch (e) {}
     }, [request, API_URL, code])
-
-    console.log(events);
 
     const deleteEvent = useCallback(async (id) => {
         const pass = window.confirm("Вы уверенны?");
@@ -72,7 +70,10 @@ export const Events = () => {
                                     <p className={Styles.date}>
                                         <span>{date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()}</span>
                                         <span className={Styles.buttons}>
-                                            <button className={Styles.delete} onClick={() => {deleteEvent(id)}}><i className={`material-icons ${Styles.icon}`}>delete</i></button>
+                                            {
+                                                profile.userRole.length > 1 ?
+                                                <button className={Styles.delete} onClick={() => {deleteEvent(id)}}><i className={`material-icons ${Styles.icon}`}>delete</i></button> : ''
+                                            }
                                             <i className={`material-icons ${Styles.icon}`}>push_pin</i>
                                         </span>
                                     </p>

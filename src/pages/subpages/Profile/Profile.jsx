@@ -39,15 +39,19 @@ export const Profile = () => {
                         </ul>
                     </div>
                 </div>
-                { 
-                    admin.length > 1 ? 
-                    <div className={Styles.create}>
+                <div className={Styles.buttons}>
+                    { 
+                        admin.length > 1 ? 
                         <NavLink activeClassName={Styles.active} to={`/panel/create`}>
                             <i className={`material-icons ${Styles.icon}`}>create</i>
                             <span className={Styles.text}>Создать</span>
-                        </NavLink>
-                    </div> : ''
-                }
+                        </NavLink> : ''
+                    }
+                    <NavLink activeClassName={Styles.active} to={`/panel/changePassword`}>
+                        <i className={`material-icons ${Styles.icon}`}>vpn_key</i>
+                        <span className={Styles.text}>Изменить пароль</span>
+                    </NavLink>
+                </div>
             </div>
         )
     }

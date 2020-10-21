@@ -3,9 +3,6 @@ import { useAuth } from '../../hooks/auth.hook'
 import { useHttp } from '../../hooks/http.hook'
 import Styles from './Taken.module.css'
 
-import Man from './../../assets/images/man.png'
-import Woman from './../../assets/images/woman.png'
-
 export const Taken = () => {
     const { code } = useAuth()
     const { loading, request, API_URL } = useHttp()
@@ -45,9 +42,6 @@ export const Taken = () => {
                                     return (
                                         <div className={Styles.card} key={ i }>
                                             <div className={Styles.main}>
-                                                {user.gender === 'male' ? 
-                                                <img src={Man} alt="man" /> :
-                                                <img src={Woman} alt="woman" />}
                                                 <p className={Styles.name}>{ user.fullname }</p>
                                                 <p className={
                                                     `

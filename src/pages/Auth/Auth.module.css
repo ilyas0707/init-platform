@@ -46,6 +46,7 @@
 .input::placeholder {
     color: #000;
     transition: all .5s;
+    text-transform: capitalize;
 }
 
 .input:focus::placeholder {

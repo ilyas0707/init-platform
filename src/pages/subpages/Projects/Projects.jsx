@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../../hooks/auth.hook'
 import { useHttp } from '../../../hooks/http.hook'
 import { useHistory } from 'react-router-dom';
+import { useError } from '../../../hooks/error.hook';
 import Styles from './Projects.module.css'
 
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
@@ -9,10 +10,13 @@ import 'react-vertical-timeline-component/style.min.css';
 import { useCallback } from 'react';
 
 export const Projects = () => {
-    const { code } = useAuth()
+    const { profile, code } = useAuth()
     const { loading, request, API_URL } = useHttp()
     const history = useHistory()
+    const errorMessage = useError()
     const [projects, setProjects] = useState()
+
+    console.log(profile);
 
     useEffect(() => {
         try {
@@ -37,7 +41,9 @@ export const Projects = () => {
                     history.push("/panel/courses")
                     history.push("/panel/projects")
                 }
-            } catch (error) {}
+            } catch (e) {
+                errorMessage("Удалять может только Администратор!")
+            }
         }
     }, [request, code, API_URL, history])
 
@@ -85,7 +91,10 @@ export const Projects = () => {
                                 >
                                     <h3 className={Styles.title}>
                                         {project.title}
-                                        <button onClick={() => {deleteProject(project.id)}}><i className={`material-icons ${project.isCompleted === 1 ? Styles.black : Styles.white}`}>delete</i></button>
+                                        {
+                                            profile.userRole.length > 1 ?
+                                            <button onClick={() => {deleteProject(project.id)}}><i className={`material-icons ${project.isCompleted === 1 ? Styles.black : Styles.white}`}>delete</i></button> : ''
+                                        }
                                     </h3>
                                     {/* <p>
                                         {

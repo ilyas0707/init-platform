@@ -7,6 +7,7 @@ import { Attendance } from '../../pages/subpages/Attendance/Attendance'
 import { Events } from '../../pages/subpages/Events/Events'
 import { Employees } from '../../pages/subpages/Employees/Employees'
 import { Create } from '../../pages/subpages/Create/Create'
+import { ChangePassword } from '../../pages/subpages/ChangePassword/ChangePassword'
 
 import Styles from './Scene.module.css'
 export const Scene = () => {
@@ -33,6 +34,9 @@ export const Scene = () => {
                 </Route>
                 <Route path="/panel/create" exact>
                     <Create />
+                </Route>
+                <Route path="/panel/changePassword" exact>
+                    <ChangePassword />
                 </Route>
             </Switch>
         </div>

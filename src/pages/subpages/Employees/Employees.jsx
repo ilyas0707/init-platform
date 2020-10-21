@@ -8,7 +8,7 @@ import Man from './../../../assets/images/man.png'
 import Woman from './../../../assets/images/woman.png'
 
 export const Employees = () => {
-    const { code } = useAuth()
+    const { profile, code } = useAuth()
     const { loading, request, API_URL } = useHttp()
     const history = useHistory()
     const [employees, setEmployees] = useState([])
@@ -87,7 +87,10 @@ export const Employees = () => {
                                 if (level === 4) {
                                     return (
                                         <div className={Styles.card} key={ i }>
-                                            <button onClick={() => {deleteUser(id)}}><i className={`material-icons ${Styles.icon}`}>delete</i></button>
+                                            {
+                                                profile.userRole.length > 1 ? 
+                                                <button onClick={() => {deleteUser(id)}}><i className={`material-icons ${Styles.icon}`}>delete</i></button> : ''
+                                            }
                                             {gender === 'male' ? 
                                             <img src={Man} alt="man" /> :
                                             <img src={Woman} alt="woman" />}
@@ -106,7 +109,10 @@ export const Employees = () => {
                                 if (level === 3) {
                                     return (
                                         <div className={Styles.card} key={ i }>
-                                            <button onClick={() => {deleteUser(id)}}><i className={`material-icons ${Styles.icon}`}>delete</i></button>
+                                            {
+                                                profile.userRole.length > 1 ? 
+                                                <button onClick={() => {deleteUser(id)}}><i className={`material-icons ${Styles.icon}`}>delete</i></button> : ''
+                                            }
                                             {gender === 'male' ? 
                                             <img src={Man} alt="man" /> :
                                             <img src={Woman} alt="woman" />}
@@ -126,7 +132,10 @@ export const Employees = () => {
                                 if (level === 2) {
                                     return (
                                         <div className={Styles.card} key={ i }>
-                                            <button onClick={() => {deleteUser(id)}}><i className={`material-icons ${Styles.icon}`}>delete</i></button>
+                                            {
+                                                profile.userRole.length > 1 ? 
+                                                <button onClick={() => {deleteUser(id)}}><i className={`material-icons ${Styles.icon}`}>delete</i></button> : ''
+                                            }
                                             {gender === 'male' ? 
                                             <img src={Man} alt="man" /> :
                                             <img src={Woman} alt="woman" />}

@@ -10,7 +10,7 @@ import Man from './../../../assets/images/man.png'
 import Woman from './../../../assets/images/woman.png'
 
 export const Attendance = () => {
-    const { code } = useAuth()
+    const { profile, code } = useAuth()
     const { loading, request, API_URL } = useHttp()
     const successMessage = useSuccess()
     const errorMessage = useError()
@@ -57,7 +57,7 @@ export const Attendance = () => {
             })
             successMessage(data.message)
         } catch (e) {
-            errorMessage("Ошибка!")
+            errorMessage("Изменять может только Администратор!")
         }
     }
 
@@ -72,8 +72,11 @@ export const Attendance = () => {
     }
 
     const links = [
-        { name: 'Отметить' }, { name: 'Отмеченное' }
+        { name: 'Отмеченное' }, { name: 'Отметить' }
     ]
+
+    console.log(profile);
+
 
     if (loading) {
         return (
@@ -90,20 +93,22 @@ export const Attendance = () => {
                 {
                     links.map(({name}, i) => {
                         return (
+                            profile.userRole ?
                             <a
                                 key={ i }
                                 href="/"
                                 className={`${Styles.tab} ${opened === i ? Styles.active : ''}`}
-                                onClick={e => {e.preventDefault(); openTab(i)}}>
+                                onClick={e => {e.preventDefault(); openTab(i)}}
+                                style={profile.userRole.length > 1 ? {} : {display: "none"}}>
                                 { name }
-                            </a>
+                            </a> : ''
                         )
                     })
                 }
             </div>
             {
                 employees ?
-                <div className={`${Styles.block} ${opened === 0 ? Styles.active : ''}`}>
+                <div className={`${Styles.block} ${opened === 1 ? Styles.active : ''}`}>
                     <div className={Styles.item}>
                         {
                             // eslint-disable-next-line
@@ -176,7 +181,7 @@ export const Attendance = () => {
                     </div>
                 </div> : ''
             }
-            <div className={`${Styles.block} ${opened === 1 ? Styles.active : ''}`}>
+            <div className={`${Styles.block} ${opened === 0 ? Styles.active : ''}`}>
                 <Taken />
             </div>
         </div>

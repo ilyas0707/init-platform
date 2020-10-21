@@ -27,7 +27,7 @@ export const Form = ({id, data, heading, select, users, url}) => {
             })
             successMessage(data.message)
         } catch (e) {
-            errorMessage("Ошибка!")
+            errorMessage("Поля не должны быть пустыми!")
         }
     }
 
