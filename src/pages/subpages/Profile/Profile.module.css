@@ -53,30 +53,6 @@
     margin-right: 10px;
 }
 
-@media screen and (max-width: 580px) {
-    .profile {
-        flex-direction: column;
-    }
-    .buttons {
-        margin-top: 30px;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .profile {
-        display: flex;
-        justify-content: center;
-    }
-}
-
-@media screen and (max-width: 360px) {
-    .card {
-        width: 100%;
-    }
-    .avatar > img {
-        width: 100%;
-    }
-}
 
 .buttons {
     width: 100%;
@@ -95,4 +71,44 @@
 
 .buttons > a:last-child {
     margin-right: 0;
+}
+
+@media screen and (max-width: 850px) {
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+    }
+    .buttons > a {
+        margin-right: 0;
+    }
+    .buttons > a:first-child {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .profile {
+        flex-direction: column;
+    }
+    .buttons {
+        margin-top: 30px;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .profile {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .card {
+        width: 100%;
+    }
+    .avatar > img {
+        width: 100%;
+    }
 }

@@ -74,8 +74,7 @@ export const Auth = () => {
                             name="username"
                             placeholder="Логин"
                             autoComplete="off"
-                            onChange={changeHandler}
-                            style={{textTransform: "lowercase"}} />
+                            onChange={changeHandler} />
                         <label htmlFor="username" className={Styles.label}>Логин</label>
                     </div>
                     <div className={Styles.inputBlock}>
