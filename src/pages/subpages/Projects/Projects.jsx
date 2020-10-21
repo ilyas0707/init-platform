@@ -70,7 +70,6 @@ export const Projects = () => {
                     projects ?
                     <div className={Styles.block}>
                         {projects.map(({project, users}, i) => {
-                            let names = []
                             let date = new Date(project.dateCreated)
                             return (
                                 <VerticalTimelineElement

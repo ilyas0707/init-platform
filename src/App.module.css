@@ -1,3 +1,7 @@
+.app {
+    max-height: 100vh;
+}
+
 .auth {
     height: 100vh;
     background: #641885;
